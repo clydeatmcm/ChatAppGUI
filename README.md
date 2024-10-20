@@ -20,10 +20,35 @@ ChatAppGUI is a Windows Forms chat application that lets users communicate in re
 ### TCP Overview
 Use this example to provide a basic understanding of how to set up a simple TCP server and client using TcpListener and TcpClient in C#.
 
+```csharp
+/* Program.cs */
+
+class Program
+{
+    static void Main(string [] args)
+    {
+        Console.WriteLine("Running TCP Demo");
+        
+        if (args.Length > 0)
+        {
+            if(args[0] == "server"){
+                SimpleServer server = new SimpleServer();
+                server.load();
+            }
+            else if(args[0] == "client"){
+                SimpleClient client = new SimpleClient();
+                client.load();
+            }
+        }
+    }
+}
+
+```
+
 The SimpleServer.cs code sets up a TCP server that listens for incoming client connections on port 5000. It initializes a TcpListener, waits for a client to connect, and reads a message from the client, displaying it in the console. After receiving the message, the server sends an echo response back to the client and closes the connection.
 
 ```csharp
-# Server Code
+/* Server Code */
 using System;
 using System.Net;
 using System.Net.Sockets;
@@ -31,9 +56,9 @@ using System.Text;
 
 class SimpleServer
 {
-    static void Main()
+    public void load()
     {
-        TcpListener server = new TcpListener(IPAddress.Any, 5000);
+        TcpListener server = new TcpListener(IPAddress.Any, 5001);
         server.Start();
         Console.WriteLine("Server started...");
 
@@ -62,16 +87,16 @@ class SimpleServer
 SimpleClient.cs code connects to the TCP server running on localhost (127.0.0.1) at port 5000. It establishes a connection, sends a greeting message to the server, and then waits for the server's response. Once received, it displays the echoed message in the console before closing the connection. Together, these codes demonstrate basic client-server communication using TCP in C#.
 
 ```csharp
-# Client Code
+/* Client Code */
 using System;
 using System.Net.Sockets;
 using System.Text;
 
 class SimpleClient
 {
-    static void Main()
+    public void load()
     {
-        TcpClient client = new TcpClient("127.0.0.1", 5000);
+        TcpClient client = new TcpClient("127.0.0.1", 5001);
         Console.WriteLine("Connected to the server.");
 
         NetworkStream stream = client.GetStream();
