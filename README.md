@@ -120,3 +120,7 @@ class SimpleClient
 1. Compile and run the server code first. It will start listening for client connections.
 2. Compile and run the client code. It will connect to the server and send a message.
 3. The server will display the message received from the client and echo it back. Then the client will display the response received from the server.
+
+### References
+* [C# Sockets - Tcp Listener Class](https://learn.microsoft.com/en-us/dotnet/api/system.net.sockets.tcplistener?view=net-8.0)
+* [C# Multi-Threaded Server and Client](https://medium.com/@hafeezullah2023/mastering-c-tcp-client-and-multi-threaded-server-your-comprehensive-guide-to-effective-4c0d29f2b0cd)
